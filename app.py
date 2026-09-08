@@ -17,7 +17,7 @@ st.set_page_config(
     page_title="CV Scanning System",
     page_icon="📋",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="auto",
 )
 
 ui.inject_custom_css()
