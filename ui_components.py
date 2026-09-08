@@ -75,30 +75,10 @@ def inject_custom_css():
     st.markdown(
         """
         <style>
-
-    /* ================= MAIN CONTENT ================= */
-        .main { background-color: #0F0F1A; }
-            div[data-testid="stAppViewContainer"] > div:first-child {
-                padding-top: 0rem !important;
-            }
-            div[data-testid="stMainBlockContainer"],
-            div[data-testid="block-container"],
-            .block-container {
-                padding-top: 2.5rem !important;
-            }
-        # .main { background-color: #0F0F1A; }
-
-        # /* ---------- Reduce top spacing of main content area ---------- */
-        # div[data-testid="stAppViewContainer"] > div:first-child {
-        #     padding-top: 0rem !important;
-        # }
-        # div[data-testid="stMainBlockContainer"],
-        # div[data-testid="block-container"],
-        # .block-container {
-        #     padding-top: 2.5rem !important;
-        # }
-
-
+        /* ================= MAIN CONTENT ================= */
+        .main { 
+            background-color: #0F0F1A; 
+        }
 
         .candidate-card {
             background: white;
@@ -109,92 +89,18 @@ def inject_custom_css():
             border-left: 4px solid var(--score-color, #6b7280);
         }
 
-        /* ================= SIDEBAR ================= */
-
-        section[data-testid="stSidebar"] {
-            background-color: #111827 !important;
-            border-right: 1px solid #1f2937 !important;
-        }
-
-        /* Sidebar text */
-        section[data-testid="stSidebar"] .stMarkdown,
-        section[data-testid="stSidebar"] .stCaption,
-        section[data-testid="stSidebar"] label {
-            color: #f3f4f6 !important;
-        }
-
-
-
-        /* ================= NAVIGATION BUTTONS ================= */
-
-        section[data-testid="stSidebar"] .stButton > button {
-            width: 100% !important;
-            border-radius: 8px !important;
-            font-weight: 500 !important;
-            transition: all 0.2s ease-in-out !important;
-        }
-
-        /* Inactive button */
-        section[data-testid="stSidebar"] .stButton > button[kind="secondary"] {
-            background-color: #1f2937 !important;
-            color: #f3f4f6 !important;
-            border: 1px solid #374151 !important;
-        }
-
-        section[data-testid="stSidebar"] .stButton > button[kind="secondary"]:hover {
-            background-color: #374151 !important;
-            color: #ffffff !important;
-            border-color: #4b5563 !important;
-        }
-
-        /* Active button */
-        section[data-testid="stSidebar"] .stButton > button[kind="primary"] {
-            background-color: #FF4B4B !important;
-            color: #ffffff !important;
-            #border: 1px solid #3b82f6 !important;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.25) !important;
-        }
-
-        section[data-testid="stSidebar"] .stButton > button[kind="primary"]:hover {
-            background-color: #FF4B4B !important;
-            color: #ffffff !important;
-        }
-
-
-
-        # /* ================= SIDEBAR TOGGLE ================= */
-
-        # button[data-testid="stSidebarCollapseButton"],
-        # [data-testid="collapsedControl"] {
-        #     display: block !important;
-        #     color: #f3f4f6 !important;
-        #     background-color: #1f2937 !important;
-        #     border: 1px solid #374151 !important;
-        #     border-radius: 8px !important;
-        # }
-
-
-
-
-    # /* ================= HEADER ================= */
-
-    #     header[data-testid="stHeader"] {
-    #         background-color: transparent !important;
-    #     }
-
-
-
-
         .card-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .candidate-name {
             font-size: 17px;
             font-weight: 700;
             color: #111827;
         }
+
         .score-circle {
             width: 46px;
             height: 46px;
@@ -206,11 +112,13 @@ def inject_custom_css():
             font-size: 15px;
             flex-shrink: 0;
         }
+
         .meta-text {
             color: #000000;
             font-size: 13px;
             margin: 6px 0 12px 0;
         }
+
         .section-label {
             font-size: 11px;
             font-weight: 700;
@@ -219,6 +127,7 @@ def inject_custom_css():
             letter-spacing: .04em;
             margin: 10px 0 4px 0;
         }
+
         .explanation-text {
             color: #000000;
             font-weight: 200;
@@ -235,16 +144,19 @@ def inject_custom_css():
             font-weight: 600;
             margin: 3px 4px 3px 0;
         }
+
         .skill-chip-matched {
             background-color: #ecfdf5;
             color: #16a34a;
             border: 1px solid #86efac;
         }
+
         .skill-chip-missing {
             background-color: #fef2f2;
             color: #dc2626;
             border: 1px solid #fca5a5;
         }
+
         .skill-chip-neutral {
             background-color: #eff6ff;
             color: #2563eb;
@@ -265,40 +177,45 @@ def inject_custom_css():
             color: #6b7280;
         }
 
+        /* ================= SIDEBAR BASE STYLES ================= */
         section[data-testid="stSidebar"] {
-            background-color: #111827;
+            background-color: #111827 !important;
+            border-right: 1px solid #1f2937 !important;
+            transition: transform 0.3s ease-in-out !important;
         }
+
+        section[data-testid="stSidebar"] .stMarkdown,
+        section[data-testid="stSidebar"] .stCaption,
+        section[data-testid="stSidebar"] label,
         section[data-testid="stSidebar"] * {
             color: #f3f4f6 !important;
         }
 
-
-
-        /* ================= SIDEBAR: Always visible, no collapse ================= */
-
-        /* Hide the collapse/expand button — scoped to sidebar ONLY so it doesn't
-        accidentally hide other buttons (like the file uploader's Browse button) */
-        section[data-testid="stSidebar"] button:has(span[data-testid="stIconMaterial"]) {
-            display: none !important;
+        section[data-testid="stSidebar"] .stButton > button {
+            border-radius: 8px !important;
+            font-weight: 500 !important;
+            transition: all 0.2s ease-in-out !important;
         }
 
-        /* Force sidebar to always render fully expanded */
-        section[data-testid="stSidebar"] {
-            min-width: 21rem !important;
-            max-width: 21rem !important;
-            width: 21rem !important;
-            transform: none !important;
-            visibility: visible !important;
-            margin-left: 0px !important;
+        section[data-testid="stSidebar"] .stButton > button[kind="secondary"] {
+            background-color: #1f2937 !important;
+            color: #f3f4f6 !important;
+            border: 1px solid #374151 !important;
         }
 
-        section[data-testid="stSidebar"][aria-expanded="false"] {
-            display: block !important;
-            transform: none !important;
-            margin-left: 0px !important;
+        section[data-testid="stSidebar"] .stButton > button[kind="secondary"]:hover {
+            background-color: #374151 !important;
+            color: #ffffff !important;
+            border-color: #4b5563 !important;
         }
 
-        /* Modern Streamlit Input Instruction Hide Rules */
+        section[data-testid="stSidebar"] .stButton > button[kind="primary"] {
+            background-color: #FF4B4B !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.25) !important;
+        }
+
+        /* Hide Input Instructions */
         div[data-testid="stInputInstruction"],
         [data-testid="stInputInstruction"] small,
         .st-emotion-cache-12w0q3e, 
@@ -308,11 +225,64 @@ def inject_custom_css():
             height: 0px !important;
         }
 
-        /* Form elements instructions */
         div[data-baseweb="base-input"] + div {
             display: none !important;
         }
 
+        /* ================= DESKTOP VIEW (> 768px) ================= */
+        @media (min-width: 769px) {
+            div[data-testid="stAppViewContainer"] > div:first-child {
+                padding-top: 0rem !important;
+            }
+
+            div[data-testid="stMainBlockContainer"],
+            div[data-testid="block-container"],
+            .block-container {
+                padding-top: 2.5rem !important;
+            }
+
+            section[data-testid="stSidebar"] .stButton > button {
+                width: 100% !important;
+            }
+
+            section[data-testid="stSidebar"] {
+                min-width: 21rem !important;
+                max-width: 21rem !important;
+                width: 21rem !important;
+            }
+        }
+
+        /* ================= MOBILE VIEW (<= 768px) ================= */
+        @media (max-width: 768px) {
+            section[data-testid="stSidebar"] > div:first-child {
+                padding: 16px 12px !important;
+            }
+
+            section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+                width: 100% !important;
+            }
+
+            section[data-testid="stSidebar"] .stButton > button {
+                width: 100% !important;
+                padding: 8px 12px !important;
+                font-size: 14px !important;
+            }
+
+            div[data-testid="stMainBlockContainer"],
+            div[data-testid="block-container"],
+            .block-container {
+                padding-top: 2rem !important;
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+            }
+
+            .candidate-card {
+                padding: 14px 16px;
+            }
+        }
         </style>
         """,
         unsafe_allow_html=True,
